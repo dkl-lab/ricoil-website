@@ -583,14 +583,21 @@
           </select>
         </div>
       </div>
+      <div class="form-row">
+        <label for="sodAddress">Full property address</label>
+        <textarea id="sodAddress" name="sodAddress" rows="2" placeholder="Building name/number, street, town" required></textarea>
+      </div>
       <div class="form-2col">
         <div class="form-row">
           <label for="sodPhone">Phone</label>
           <input type="tel" id="sodPhone" name="sodPhone" required>
         </div>
         <div class="form-row">
-          <label for="sodArea">Postcode / area</label>
-          <input type="text" id="sodArea" name="sodArea" required>
+          <label for="sodPostcode">Postcode</label>
+          <input type="text" id="sodPostcode" name="sodPostcode" required
+                 pattern="^([Gg][Ii][Rr] ?0[Aa]{2}|[A-Za-z][0-9][0-9]?[ ]?[0-9][A-Za-z]{2}|[A-Za-z][A-Za-z][0-9][0-9]?[ ]?[0-9][A-Za-z]{2}|[A-Za-z][0-9][A-Za-z][ ]?[0-9][A-Za-z]{2}|[A-Za-z][A-Za-z][0-9][A-Za-z][ ]?[0-9][A-Za-z]{2})$"
+                 title="Enter a valid UK postcode, e.g. SW1A 1AA"
+                 placeholder="e.g. SW1A 1AA">
         </div>
       </div>
       <div class="form-row">
@@ -703,9 +710,9 @@
       business_name: `Save Our Drains — ${f.sodRole.value}`,
       contact_name: f.sodName.value.trim(),
       phone: f.sodPhone.value.trim(),
-      postcode: f.sodArea.value.trim(),
+      postcode: f.sodPostcode.value.trim().toUpperCase(),
       volume: f.sodScale.value,
-      details: f.sodDetails.value.trim()
+      details: `Address: ${f.sodAddress.value.trim()}\n\n${f.sodDetails.value.trim()}`.trim()
     };
 
     sodSubmitBtn.disabled = true;
